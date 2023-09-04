@@ -1,4 +1,4 @@
 #!/usr/bin/python3
 
 number = 98
-print(f"{number!s} Battery street")
+print(f"{} Battery street".format(number))
