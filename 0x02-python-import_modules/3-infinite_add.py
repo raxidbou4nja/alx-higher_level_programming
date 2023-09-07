@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import sys
-
-def main():
+if __name__ == "__main__":
     if len(sys.argv) <= 1:
         print("0")
         return
@@ -11,6 +10,3 @@ def main():
         print("{}".format(result))
     except ValueError:
         print("Error: Some arguments are not integers.")
-
-if __name__ == "__main__":
-    main()
