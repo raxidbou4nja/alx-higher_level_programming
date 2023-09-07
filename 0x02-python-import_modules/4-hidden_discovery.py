@@ -1,12 +1,6 @@
 #!/usr/bin/python3
-import hidden_4 as hidden
-
-def main():
-    module_attributes = dir(hidden)
-
-    for attribute in module_attributes:
-        if not attribute.startswith('_'):
-            print(attribute)
-
 if __name__ == "__main__":
-    main()
+    import hidden_4
+    for name in dir(hidden_4):
+        if name[0] != '_' and name[1] != '_':
+            print(name)
