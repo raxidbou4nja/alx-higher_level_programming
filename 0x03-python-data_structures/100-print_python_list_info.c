@@ -2,7 +2,7 @@
 #include "listobject.h"
 void print_python_list_info(PyObject *p)
 {
-    int index
+    int index;
     int l;
 
     l = PyList_Size(p)
