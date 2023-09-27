@@ -2,7 +2,6 @@
 """Coordinates of a square"""
 
 
-
 class Square:
     """Defines a square with size and comparison methods."""
 
