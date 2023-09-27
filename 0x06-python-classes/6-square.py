@@ -3,6 +3,7 @@
 Definition of the Square class.
 """
 
+
 class Square:
     """A 2D square class with methods for manipulation."""
 
