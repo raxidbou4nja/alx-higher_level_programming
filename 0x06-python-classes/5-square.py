@@ -69,4 +69,14 @@ class Square:
         """
         return self.__size ** 2
 
-    def
+    def my_print(self):
+        """
+        Prints out a grid of '#' representing the square.
+
+        Prints a blank line if size is 0.
+        """
+        if self.__size == 0:
+            print()
+        else:
+            for i in range(self.__size):
+                print("#" * self.__size)
