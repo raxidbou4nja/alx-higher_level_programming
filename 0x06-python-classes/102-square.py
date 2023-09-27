@@ -1,42 +1,53 @@
 #!/usr/bin/python3
+"""Coordinates of a square"""
+
+
 class Square:
-    """Defines a square"""
+    """Private instance attribute: size
+    Instantiation with area and position method """
+
     def __init__(self, size=0):
-        """Initialises the data"""
+        """Initializes attribute size """
         self.size = size
 
     def area(self):
-        """Returns current square area"""
-        return self.__size**2
+        """Calculate area of square"""
+        return (self.__size * self.__size)
 
     @property
     def size(self):
-        """Getter method"""
+        """Getter for square"""
         return self.__size
 
     @size.setter
     def size(self, value):
-        """Setter method"""
-        self.__size = value
-        if type(value) != int:
+        """Initializes attribute size """
+        if (type(value) is not int):
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
-
-    def __lt__(self, other):
-        return self.area() < other.area()
-
-    def __le__(self, other):
-        return self.area() <= other.area()
+        self.__size = value
 
     def __eq__(self, other):
-        return self.area() == other.area()
+        """Equal"""
+        return self.size == other.size
 
     def __ne__(self, other):
-        return self.area() != other.area()
+        """Not Equal"""
+        return self.size != other.size
+
+    def __lt__(self, other):
+        """Less than"""
+        return self.size < other.size
+
+    def __le__(self, other):
+        """Less than or equal"""
+        return self.size <= other.size
 
     def __gt__(self, other):
-        return self.area() > other.area()
+        """Greater than"""
+        return self.size > other.size
 
     def __ge__(self, other):
-        return self.area() >= other.area()
+        """Greater than or equal"""
+        return self.size >= other.size
