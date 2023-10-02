@@ -4,7 +4,6 @@ This is the "Rectangle" module
 This module defines a basic Rectangle class
 """
 
-
 class Rectangle:
     def __init__(self, width=0, height=0):
         self._width = 0
