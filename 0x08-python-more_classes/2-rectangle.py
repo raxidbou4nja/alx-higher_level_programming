@@ -2,7 +2,8 @@
 """
 This is the "Rectangle" module.
 
-This module defines a simple Rectangle class with width and height attributes,
+This module defines a simple Rectangle class
+with width and height attributes,
 along with methods to calculate its area and perimeter.
 """
 
