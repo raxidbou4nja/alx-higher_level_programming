@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-definition of square
+Definition of the Square class.
 """
+
 
 class Square:
     """A 2D square class with methods for manipulation."""
@@ -17,9 +18,9 @@ class Square:
     @size.setter
     def size(self, value):
         if not isinstance(value, int):
-            raise TypeError("Size must be an integer")
+            raise TypeError("size must be an integer")
         elif value < 0:
-            raise ValueError("Size must be greater than or equal to 0")
+            raise ValueError("size must be >= 0")
         self.__size = value
 
     @property
@@ -51,16 +52,16 @@ class Square:
             ValueError: If size is negative.
         """
         if not isinstance(size, int):
-            raise TypeError("Size must be an integer")
+            raise TypeError("size must be an integer")
         elif size < 0:
-            raise ValueError("Size must be greater than or equal to 0")
+            raise ValueError("size must be >= 0")
         self.__size = size
 
         if not (isinstance(position, tuple) and
                 len(position) == 2 and isinstance(position[0], int) and
                 isinstance(position[1], int) and position[0] >= 0 and
                 position[1] >= 0):
-            raise TypeError("Position must be a tuple of two positive integers")
+            raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = position
 
