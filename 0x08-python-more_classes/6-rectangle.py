@@ -8,6 +8,7 @@ representation, and deletion behavior. It also includes a class attribute
 `number_of_instances` to keep track of the number of instances created.
 """
 
+
 class Rectangle:
     """
     A class representing a Rectangle.
@@ -16,7 +17,7 @@ class Rectangle:
         width (int): The width of the rectangle.
         height (int): The height of the rectangle.
     """
-    
+
     number_of_instances = 0
 
     def __init__(self, width=0, height=0):
