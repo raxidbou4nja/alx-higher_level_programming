@@ -6,7 +6,9 @@ This module defines a Rectangle class with width and height attributes,
 along with methods to calculate its area, perimeter, and provide string,
 representation, and deletion behavior. It also includes class attributes
 `number_of_instances` to keep track of the number of instances created and
-`print_symbol` to specify the symbol used for printing.
+`print_symbol` to specify the symbol used for printing. Additionally, it has
+a static method `bigger_or_equal` that returns the bigger rectangle among
+two provided instances.
 """
 
 
@@ -79,6 +81,31 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """
+        Compare two rectangles and return the bigger one.
+
+        Args:
+            rect_1 (Rectangle): The first rectangle to compare.
+            rect_2 (Rectangle): The second rectangle to compare.
+
+        Returns:
+            Rectangle: The bigger rectangle among the two provided instances.
+
+        Raises:
+            TypeError: If either rect_1 or rect_2 is not
+            an instance of Rectangle.
+        """
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() >= rect_2.area():
+            return rect_1
+        else:
+            return rect_2
 
     def __repr__(self):
         """Return a string representation of the rectangle."""
