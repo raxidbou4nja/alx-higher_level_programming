@@ -2,9 +2,11 @@
 """
 This is the "Rectangle" module.
 
-This module defines a simple Rectangle class with width and height attributes.
+This module defines a simple Rectangle class with
+width and height attributes.
 The default values for both attributes are set to 0.
 """
+
 
 class Rectangle:
     """
