@@ -14,7 +14,9 @@ Exceptions:
     ValueError: Raised if the matrices are not compatible for multiplication.
 """
 
+
 import numpy as np
+
 
 def lazy_matrix_mul(m_a, m_b):
     """
