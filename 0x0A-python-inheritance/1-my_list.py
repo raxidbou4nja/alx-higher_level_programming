@@ -1,20 +1,16 @@
 #!/usr/bin/python3
 """
-A custom class MyList that inherits from the built-in list class.
+===========================
+Module with class MyList
+===========================
 """
 
 
 class MyList(list):
-    """
-    A class that extends the list class and adds
-    a method for sorting and printing the list.
-    """
+    """Class with method print_sorted"""
+    pass
 
     def print_sorted(self):
-        """
-        Print the elements of the list in sorted order.
-        """
+        """Methot that sorted a list"""
 
-        sorted_list = sorted(self)
-
-        print(sorted_list)
+        print(sorted(list(self)))
