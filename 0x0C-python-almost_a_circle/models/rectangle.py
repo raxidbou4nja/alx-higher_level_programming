@@ -112,3 +112,28 @@ class Rectangle(Base):
             self.x = args[3]
         if len(args) >= 5:
             self.y = args[4]
+
+    def update(self, *args, **kwargs):
+        """Assign positional arguments and/or keyword arguments to attributes.
+
+        Args:
+            *args: Positional arguments in the order id, width, height, x, y.
+            **kwargs: Keyword arguments to assign to attributes.
+        """
+        if args:
+            attrs = ["id", "width", "height", "x", "y"]
+            for i, value in enumerate(args):
+                setattr(self, attrs[i], value)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
+    def to_dictionary(self):
+        """Return a dictionary representation of the Rectangle."""
+        return {
+            'id': self.id,
+            'width': self.width,
+            'height': self.height,
+            'x': self.x,
+            'y': self.y
+        }
