@@ -4,7 +4,7 @@ A Base class to manage object IDs.
 """
 
 import json
-
+import csv
 
 class Base:
     """Base class to handle object IDs."""
@@ -48,10 +48,14 @@ class Base:
             The filename is based on the class name.
 
         Example:
-            If called from the Rectangle class, it will save to "Rectangle.json".
+            If called from the Rectangle class, it will
+            save to "Rectangle.json".
         """
         filename = cls.__name__ + ".json"
-        obj_list = [obj.to_dictionary() for obj in list_objs] if list_objs is not None else []
+        if list_objs:
+            obj_list = [obj.to_dictionary() for obj in list_objs]
+        else:
+            obj_list = []
         json_data = cls.to_json_string(obj_list)
 
         with open(filename, "w") as file:
@@ -62,7 +66,8 @@ class Base:
         """Return a list of dictionaries from a JSON string.
 
         Args:
-            json_string (str): A JSON string representing a list of dictionaries.
+            json_string (str): A JSON string representing
+            a list of dictionaries.
 
         Returns:
             list: List of dictionaries represented by the JSON string.
@@ -80,7 +85,8 @@ class Base:
             **dictionary: A dictionary with attribute values.
 
         Returns:
-            cls: An instance of the class with attributes set from the dictionary.
+            cls: An instance of the class with attributes
+            set from the dictionary.
         """
         if cls.__name__ == "Rectangle":
             dummy = cls(1, 1)
@@ -97,7 +103,8 @@ class Base:
             cls: The class.
 
         Returns:
-            list: List of instances based on the current class and data from the JSON file.
+            list: List of instances based on the current class
+            and data from the JSON file.
         """
         filename = cls.__name__ + ".json"
         try:
@@ -105,6 +112,63 @@ class Base:
                 json_data = file.read()
                 dict_list = cls.from_json_string(json_data)
                 instance_list = [cls.create(**d) for d in dict_list]
+                return instance_list
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Write the CSV representation of list_objs to a file.
+
+        Args:
+            cls: The class.
+            list_objs (list): A list of instances that inherit from Base.
+
+        Note:
+            The filename is based on the class name.
+
+        Example:
+            If called from the Rectangle class, it will
+            save to "Rectangle.csv".
+        """
+        filename = cls.__name__ + ".csv"
+
+        with open(filename, "w", newline="") as file:
+            writer = csv.writer(file)
+            if cls.__name__ == "Rectangle":
+                fieldnames = ["id", "width", "height", "x", "y"]
+            elif cls.__name__ == "Square":
+                fieldnames = ["id", "size", "x", "y"]
+            else:
+                return
+
+            writer.writerow(fieldnames)
+
+            for obj in list_objs:
+                row = [getattr(obj, field) for field in fieldnames]
+                writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Load a list of instances from a CSV file.
+
+        Args:
+            cls: The class.
+
+        Returns:
+            list: List of instances based on the current class
+            and data from the CSV file.
+        """
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, 'r', newline="") as file:
+                reader = csv.DictReader(file)
+                instance_list = []
+
+                for row in reader:
+                    instance = cls.create(**row)
+                    instance_list.append(instance)
+
                 return instance_list
         except FileNotFoundError:
             return []

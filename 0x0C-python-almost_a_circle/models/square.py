@@ -27,7 +27,10 @@ class Square(Rectangle):
 
     @size.setter
     def size(self, value):
-        """Setter for the size attribute, sets width and height to the same value."""
+        """
+        Setter for the size attribute, sets width and
+        height to the same value
+        """
         self.width = value
         self.height = value
 
@@ -48,7 +51,8 @@ class Square(Rectangle):
 
     def __str__(self):
         """Return a string representation of the Square instance."""
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
+        format_string = "[Square] ({}) {}/{} - {}"
+        return format_string.format(self.id, self.x, self.y, self.width)
 
     def to_dictionary(self):
         """Return a dictionary representation of the Square."""

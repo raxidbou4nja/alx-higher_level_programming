@@ -5,6 +5,7 @@ Rectangle class module.
 
 from models.base import Base
 
+
 class Rectangle(Base):
     """Rectangle class, inherits from Base class."""
 
@@ -91,10 +92,16 @@ class Rectangle(Base):
 
     def __str__(self):
         """Return a string representation of the Rectangle instance."""
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.width, self.height)
+        format_string = "[Rectangle] ({}) {}/{} - {}/{}"
+        return format_string.format(
+            self.id, self.x, self.y, self.width, self.height
+        )
 
     def display(self):
-        """Display the Rectangle instance with '#' characters, considering x and y offsets."""
+        """
+        Display the Rectangle instance with '#' characters,
+        considering x and y offsets.
+        """
         for _ in range(self.y):
             print()
         for _ in range(self.height):
