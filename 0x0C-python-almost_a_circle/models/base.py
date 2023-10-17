@@ -6,6 +6,7 @@ A Base class to manage object IDs.
 import json
 import csv
 
+
 class Base:
     """Base class to handle object IDs."""
     __nb_objects = 0
@@ -166,7 +167,17 @@ class Base:
                 instance_list = []
 
                 for row in reader:
-                    instance = cls.create(**row)
+                    if cls.__name__ == "Square":
+                        field_names = ["id", "size", "x", "y"]
+                    else:
+                        field_names = ["id", "width", "height", "x", "y"]
+
+                    data = {}
+                    for key, value in row.items():
+                        if key in field_names:
+                            data[key] = int(value)
+
+                    instance = cls.create(**data)
                     instance_list.append(instance)
 
                 return instance_list
