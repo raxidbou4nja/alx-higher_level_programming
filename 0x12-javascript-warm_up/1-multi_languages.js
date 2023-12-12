@@ -1,5 +1,4 @@
 #!/usr/bin/node
-// Print string “Javascript is amazing”
+// It prints 3 lines
 
-const myVar = 'Javascript is amazing';
-console.log(myVar);
+console.log('C is fun\nPython is cool\nJavascript is amazing');
