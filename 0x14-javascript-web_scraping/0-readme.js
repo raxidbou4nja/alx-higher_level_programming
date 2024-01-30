@@ -13,7 +13,6 @@ fs.readFile(filePath, 'utf-8', (err, data) => {
   if (err) {
     console.error(err);
   } else {
-    process.stdout.write(data);  
+    process.stdout.write(data);
   }
 });
-
