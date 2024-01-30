@@ -1,7 +1,9 @@
+#!/usr/bin/env node
+
 const fs = require('fs');
 
 if (process.argv.length !== 3) {
-  console.error('Usage: node 0-readme.js <file path>');
+  console.error('Usage: ./0-readme.js <file path>');
   process.exit(1);
 }
 
@@ -14,3 +16,4 @@ fs.readFile(filePath, 'utf-8', (err, data) => {
     console.log(data);
   }
 });
+
