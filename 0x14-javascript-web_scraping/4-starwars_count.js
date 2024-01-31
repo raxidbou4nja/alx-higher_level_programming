@@ -2,19 +2,32 @@
 
 const request = require('request');
 
-if (process.argv.length !== 3) {
-  console.error('Usage: ./4-starwars_count.js <API URL>');
-  process.exit(1);
-}
+const starWarsUri = 'https://swapi-api.alx-tools.com/api/films/';
 
-const apiUrl = process.argv[2];
-
-request(apiUrl, function (error, response, body) {
+request(starWarsUri, function (error, response, body) {
   if (error) {
     console.error('Error:', error.message);
-  } else {
+    return;
+  }
+
+  try {
     const films = JSON.parse(body).results;
-    const wedgeMovies = films.filter(film => film.characters.includes('https://swapi-api.alx-tools.com/api/people/18/'));
-    console.log(wedgeMovies.length);
+    let times = 0;
+
+    films.forEach((film) => {
+      const characters = film.characters;
+
+      characters.forEach((character) => {
+        const characterId = character.split('/')[5];
+
+        if (characterId === '18') {
+          times += 1;
+        }
+      });
+    });
+
+    console.log(times);
+  } catch (parseError) {
+    console.error('Error parsing JSON:', parseError.message);
   }
 });
