@@ -14,25 +14,20 @@ function getDataFrom (url) {
   });
 }
 
-function errHandler (err) {
-  console.log(err);
-}
-
 async function printMovieCharacters (movieId) {
   const movieUri = `https://swapi-api.hbtn.io/api/films/${movieId}`;
 
   try {
     const movieData = await getDataFrom(movieUri);
-    const characters = JSON.parse(movieData).characters;
+    const { characters } = JSON.parse(movieData);
 
     const characterPromises = characters.map(characterUrl => getDataFrom(characterUrl));
     const characterResponses = await Promise.all(characterPromises);
 
-    characterResponses.forEach(response => {
-      console.log(JSON.parse(response).name);
-    });
+    const characterNames = characterResponses.map(response => JSON.parse(response).name);
+    characterNames.forEach(name => console.log(name));
   } catch (err) {
-    errHandler(err);
+    console.log(err);
   }
 }
 
