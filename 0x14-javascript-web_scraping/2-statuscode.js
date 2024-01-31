@@ -11,9 +11,9 @@ const url = process.argv[2];
 
 request(url, function (error, response) {
   if (error) {
-    console.error('Error:', error.message);
+    console.error('error:', error.message);
   } else {
-    console.log('Code:', response.statusCode);
+    console.log('code:', response.statusCode);
   }
 });
 
