@@ -2,7 +2,14 @@
 
 const request = require('request');
 
-const starWarsUri = 'https://swapi-api.alx-tools.com/api/films/';
+// Check if the correct number of arguments is provided
+if (process.argv.length !== 3) {
+  console.error('Usage: ./4-starwars_count.js <API URL>');
+  process.exit(1);
+}
+
+const starWarsUri = process.argv[2];
+let times = 0;
 
 request(starWarsUri, function (error, response, body) {
   if (error) {
@@ -12,19 +19,18 @@ request(starWarsUri, function (error, response, body) {
 
   try {
     const films = JSON.parse(body).results;
-    let times = 0;
 
-    films.forEach((film) => {
-      const characters = film.characters;
+    for (let i = 0; i < films.length; ++i) {
+      const characters = films[i].characters;
 
-      characters.forEach((character) => {
-        const characterId = character.split('/')[5];
+      for (let j = 0; j < characters.length; ++j) {
+        const characterId = characters[j].split('/')[5];
 
         if (characterId === '18') {
           times += 1;
         }
-      });
-    });
+      }
+    }
 
     console.log(times);
   } catch (parseError) {
